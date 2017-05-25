@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Soulful Adventures @ India</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script src="https://use.fontawesome.com/b85dcf5277.js"></script>
+
+</head>
+<body>
+	<div class="container-fluid">
+	  <div class="row">
+		<div class="background_slider_cont" >
+		</div>
+	  </div>
+	</div>
+
+	<div class="slide_nav">
+		<i class="fa fa-long-arrow-left" aria-hidden="true" on-click="changeSlide()" data-action="left"></i>
+		<i class="fa fa-long-arrow-right" aria-hidden="true" on-click="changeSlide()" data-action="right"></i>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Soulfuladventures.in</h3>
+			</div>
+		</div>
+	</div>
+
+	<style type="text/css">
+		.background_slider_cont{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+    		background-position: center;
+    		background-repeat: no-repeat;
+    		background-size: cover;
+    		z-index: -10000;
+
+    		-webkit-transition: all .9s ease;
+    		      -moz-transition: all .9s ease;
+    		       -ms-transition: all .9s ease;
+    		        -o-transition: all .9s ease;
+    		           transition: all .9s ease;
+		}
+		.slide_nav{
+			color:#ffffff;
+			position: fixed;
+			bottom: 10px;
+			text-align:center;
+			width: 100%;
+			font-size: 30px;
+		}
+		.slide_nav i{
+			cursor: pointer;
+			background-color: rgba(0, 0, 0, 0.47);
+    		padding: 2px 12px
+		}
+	</style>
+	
+	<script type="text/javascript">
+		var imageUrls = [
+			'http://wallpaper-gallery.net/images/best-forest-wallpaper/best-forest-wallpaper-26.jpg',
+			'http://wallpaper-gallery.net/images/wallpaper-forest/wallpaper-forest-10.jpg',
+			'https://images2.alphacoders.com/103/103560.jpg',
+			'http://www.obaasima.com/i/2017/02/best-nature-wallpaper-android.jpg',
+		];
+
+		$(".background_slider_cont").css('background-image', 'url('+imageUrls[0]+')');
+		var slideCount = imageUrls.length;
+		var currentImageId = 0;
+
+		$(".slide_nav i" ).click(function() {
+			var action = $(this).data('action');
+			if(action == 'left'){
+				changeImageId = currentImageId-1;
+				if(changeImageId<0){
+					changeImageId = slideCount;
+				}
+			}else{
+				changeImageId = currentImageId+1;
+				if(changeImageId>=slideCount){
+					changeImageId = 0;
+				}
+			}
+			currentImageId = changeImageId;
+			$(".background_slider_cont").css('background-image', 'url('+imageUrls[changeImageId]+')');
+		});
+	</script>
+
+</body>
+</html>
